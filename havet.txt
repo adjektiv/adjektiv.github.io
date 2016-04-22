@@ -1,0 +1,29 @@
+UTE PÅ HAVET
+bakgrunn.jpg
+
+Det var en gang en [1] [2]
+bakgrunn.jpg,detvarengang.wav
+
+som seilte på et [3] hav.
+bakgrunn.jpg,somseiltepaaet.wav,hav.wav
+
+Båten [?2]en seilte i var ikke en hvilken som helst båt, det var nemlig en [4] båt!
+bakgrunn.jpg,baaten.wav,[?2+2],seilteivarikkeen.wav,baat.wav
+
+Da den [?1] [?2]en hadde seilt en stund fikk han plutselig øye på en som vinket.
+bakgrunn.jpg,daden.wav,[?2+2],haddeseiltfikkoyepaa.wav
+
+Det var jo vennen hans [5]!
+bakgrunn.jpg,detvarjovennenhans.wav
+
+Den [?1] [?2]en seilte bort til [?5] som gjerne ville sitte på. Så seilte de ut på det [?3] havet i [?4] båten helt frem til [6]… og seilte hjem.
+bakgrunn.jpg,den.wav,[?2+2],seilteborttil.wav,somvillesitte.wav,saaseiltede.wav,haveti.wav,heltfremtil.wav,ogseiltehjem.wav
+
+----------
+[1] Prompete,prompete.jpg,prompete.wav | kosete,kosete.jpg,kosete.wav | hårete,haarete.jpg,haarete.wav
+[2] Pirat,pirat.jpg,pirat.wav,piraten.wav | hummer,hummer.jpg,hummer.wav,hummeren.wav | blekksprut,blekksprut.jpg,blekksprut.wav,blekkspruten.wav 
+[3] bølgete,bolgete.jpg,bolgete.wav | rotete,rotete.jpg,rotete.wav | slimete,slimete.jpg,slimete.wav
+[4] appelsin,appelsin.jpg,appelsin.wav | bark,bark.jpg,bark.wav | potet,potet.jpg,potet.wav
+[5] krabben,krabbe.jpg,krabben.wav | Maneten,maneten.jpg,maneten.wav | Kråka,kraaka.jpg,kraaka.wav
+[6] klokken 11,klokken11.jpg,klokken11.wav | det ble mørkt,detblemorkt.jpg,detblemorkt.wav | de måtte bæsje,demaattebeasje.jpg,demaattebeasje.wav 
+

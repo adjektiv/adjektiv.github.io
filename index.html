@@ -34,34 +34,34 @@
 
 
 <script type="text/html" id="historieText">
-Astronauten som fikk motorstopp
-ingen
+UTE PÅ HAVET
+bakgrunn.jpg
 
-Det var en gang en veldig [1] astronaut,
-ingen, detvarengangenveldig.wav,[?1], astronaut.wav
+Det var en gang en [1] [2]
+bakgrunn.jpg,detvarengang.wav,[?1],[?2]
 
-Det var fordi han var en [2].
-ingen, detvarfordihanvaren.wav, [?2]
+som seilte på et [3] hav.
+bakgrunn.jpg,somseiltepaaet.wav,[?3],hav.wav
 
-En dag da astronauten var ute i verdensrommet i sin [3] rakett, stoppet motoren!
-ingen, endagda.wav, astronauten.wav, varuteiverdensrommetisin.wav, [?3], rakett.wav, stoppetmotoren.wav
+Båten [?2]en seilte i var ikke en hvilken som helst båt, det var nemlig en [4] båt!
+bakgrunn.jpg,baaten.wav,[?2+2],seilteivarikkeen.wav,[?4],baat.wav
 
-Astronauten ringte til sin venn [4] og sa: Du må hjelpe meg, den [?3] raketten min har fått motorstopp og jeg kan ikke reise hjem til jorda! [?4] svarte: Null problem.
-ingen, astronautenringtetilsinvenn.wav, [?4] ogsadumahjelpemegden.wav, [?3], rakettenminharfattmotorstoppogjegkanikkereisehjemtiljorda.wav, [?4] svartenullproblem.wav
+Da den [?1] [?2]en hadde seilt en stund fikk han plutselig øye på en som vinket.
+bakgrunn.jpg,daden.wav,[?1],[?2+2],haddeseiltfikkoyepaa.wav
 
-Litt senere så astronauten ut vinduet sitt og der var det en [5], det var vennen hans [?4] som kom for å hente ham.
-ingen, littseneresaastronautenutvinduetsittogdervardeten.wav, [?5] detvarvennenhans.wav, [?4], somkomforahenteham.wav
+Det var jo vennen hans [5]!
+bakgrunn.jpg,detvarjovennenhans.wav,[?5]
 
-Astronauten og vennen kjørte hjem og spiste seg mette på [6].
-ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
+Den [?1] [?2]en seilte bort til [?5] som gjerne ville sitte på. Så seilte de ut på det [?3] havet i [?4] båten helt frem til [6]… og seilte hjem.
+bakgrunn.jpg,den.wav,[?1],[?2+2],seilteborttil.wav,[?5],somvillesitte.wav,saaseiltede.wav,[?3],haveti.wav,[?4],heltfremtil.wav,[?6],ogseiltehjem.wav
 
 ----------
-[1] GLAD, glad.jpg, glad.wav | PROMPETE, prompete.jpg, prompete.wav | SØT, søt.jpg, sot.wav
-[2] LØVE, løve.jpg, love.wav | ISBJØRN, isbjørn.jpg, isbjorn.wav | SJØSTJERNE, sjøstjerne.jpg, sjostjerne.wav
-[3] ROSA, rosa.jpg, rosa.wav | REGNBUEFARGEDE, regnbuefargede.jpg, regnbuefargede.wav | PRIKKETE, prikkete.jpg, prikkete.wav
-[4] SLANGEN, slangen.jpg, slangen.wav | PINGVINEN, pingvinen.jpg, pingvinen.wav | SJIRAFFEN, sjiraffen, sjiraffen.wav
-[5] BÅT, båt.jpg, bat.wav | BANAN, banan.jpg, banan.wav | RACERBIL, racerbil.jpg, racerbil.wav
-[6] SJOKOLADEKAKE, sjokoladekake.jpg, sjokoladekake.wav | BLEKKSPRUTPIZZA, blekksprutpizza.jpg, blekksprutpizza.wav | EN HALV GULROT, enhalvgulrot.jpg, enhalvgulrot.wav
+[1] Prompete,prompete.jpg,prompete.wav | kosete,kosete.jpg,kosete.wav | hårete,haarete.jpg,haarete.wav
+[2] Pirat,pirat.jpg,pirat.wav,piraten.wav | hummer,hummer.jpg,hummer.wav,hummeren.wav | blekksprut,blekksprut.jpg,blekksprut.wav,blekkspruten.wav
+[3] bølgete,bolgete.jpg,bolgete.wav | rotete,rotete.jpg,rotete.wav | slimete,slimete.jpg,slimete.wav
+[4] appelsin,appelsin.jpg,appelsin.wav | bark,bark.jpg,bark.wav | potet,potet.jpg,potet.wav
+[5] krabben,krabbe.jpg,krabben.wav | Maneten,maneten.jpg,maneten.wav | Kråka,kraaka.jpg,kraaka.wav
+[6] klokken 11,klokken11.jpg,klokken11.wav | det ble mørkt,detblemorkt.jpg,detblemorkt.wav | de måtte bæsje,demaattebeasje.jpg,demaattebeasje.wav
 </script>
 
 
@@ -131,7 +131,7 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
                 $("#options").html("");
 
                 var audio = $("#soundPlayer")[0];
-                audio.src = "audio/" + option.sounds[0].trim();
+                audio.src = "audio/" + option.sounds[0];
                 audio.onended = function(){
                     audioIndex++;
                     playAudio();
@@ -190,9 +190,9 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
                     if(sound != undefined){
                         var keyPattern = /(\d+)/g;
                         if(sound[0] == "["){
-                            var matches = sound.match(keyPattern)[0];
+                            var matches = sound.match(keyPattern);//sound.match(keyPattern)[0];
                             var key = matches[0];
-                            var offset = (matches[1] != undefined) ? matches[1]:0;
+                            var offset = (matches[1] != undefined) ? (matches[1]*1)-1:0;
                             var choice = storyStructure.choice["key_" + key];
 
                             if(choice != undefined){
@@ -245,16 +245,16 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
 
                 var renderButtons = (buttons != undefined) ? buttons:true;
 
-                if(pattern.test(rawPage)){
+                if(pattern.test(rawPage) || refPattern.test(rawPage)){
                     matches = rawPage.match(pattern);
-                    for(var i in matches){
+                    for(i in matches){
                         var match = matches[i];
                         var key = match.match(keyPattern)[0];
 
                         var disp = "...........";
 
                         if( storyStructure.choice["key_" + key]){
-                            disp = storyStructure.choice["key_" + key].word;  //.replace(/(\[\?\d\])/,"");
+                            disp = storyStructure.choice["key_" + key].word; //.replace(/(\[\?\d\])/,"");
                         }
 
                         var action = "<span class='btn btn-info' id='key_" + key + "' onclick='showOptions(" + key + ")'>" +disp + "</span>";
@@ -267,15 +267,10 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
 
                     if(refPattern.test(parsedPage)){
                         matches = rawPage.match(refPattern);
-                        for(var i in matches){
+                        for(i in matches){
                             match = matches[i];
                             key = match.match(keyPattern)[0];
-                            var word = storyStructure.choice["key_" + key];
-
-                            if(word != undefined){
-                                word = word.word;
-                            }
-
+                            var word = storyStructure.choice["key_" + key].word;
                             if(word != undefined){
                                 parsedPage = parsedPage.replace(match.trim(),word.trim());
                             } else{
