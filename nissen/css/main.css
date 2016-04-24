@@ -1,0 +1,68 @@
+body {
+    padding: 2rem;
+    text-align: center;
+}
+
+
+
+html, body {
+    height: 100%;
+}
+
+.contentContainer {
+    background-color: #67b168;
+    width: 100%;
+    max-width: 580px;
+    padding: 6rem 6rem;
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+}
+
+h1{
+    font-size: 3.5em;
+}
+
+p{
+    font-size: 2.5em;
+}
+
+.fullHeight {
+    min-height: 100%;
+    height: 100%;
+}
+
+.threeQuaerterHight{
+    min-height: 60%;
+    height: 60%;
+}
+
+.next{
+    background-color: green;
+}
+
+.prev{
+    background-color: lightskyblue;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.pos {
+    position: absolute;
+    top: 80%;
+    left:0;
+}
