@@ -64,11 +64,12 @@ ingen,menhvanissenskalbrukede.wav,[?8],verktøyenetildetmå.wav,[?9], duhjelpeha
 
 
 
+
         <script type="application/javascript">
 
             /*
-                Story telling script by Christian Simonsen
-                April 2016
+             Story telling script by Christian Simonsen
+             April 2016
              */
 
             var STORY = 0;
@@ -86,10 +87,10 @@ ingen,menhvanissenskalbrukede.wav,[?8],verktøyenetildetmå.wav,[?9], duhjelpeha
 
             jQuery(document).ready(function(){
                 /*fetchStory(sourceFile).done(function(){
-                    rawData = rawData;
-                    parseRawStory(rawData);
-                    tellStory();
-                });*/
+                 rawData = rawData;
+                 parseRawStory(rawData);
+                 tellStory();
+                 });*/
                 rawData = $("#historieText").html();
                 parseRawStory(rawData);
                 tellStory();
@@ -187,9 +188,9 @@ ingen,menhvanissenskalbrukede.wav,[?8],verktøyenetildetmå.wav,[?9], duhjelpeha
                     if(sound != undefined){
                         var keyPattern = /(\d+)/g;
                         if(sound[0] == "["){
-                            var matches = sound.match(keyPattern)[0];
+                            var matches = sound.match(keyPattern);//sound.match(keyPattern)[0];
                             var key = matches[0];
-                            var offset = (matches[1] != undefined) ? matches[1]:0;
+                            var offset = (matches[1] != undefined) ? (matches[1]*1)-1:0;
                             var choice = storyStructure.choice["key_" + key];
 
                             if(choice != undefined){
@@ -242,7 +243,7 @@ ingen,menhvanissenskalbrukede.wav,[?8],verktøyenetildetmå.wav,[?9], duhjelpeha
 
                 var renderButtons = (buttons != undefined) ? buttons:true;
 
-                if(pattern.test(rawPage)){
+                if(pattern.test(rawPage) || refPattern.test(rawPage)){
                     matches = rawPage.match(pattern);
                     for(i in matches){
                         var match = matches[i];
@@ -344,14 +345,14 @@ ingen,menhvanissenskalbrukede.wav,[?8],verktøyenetildetmå.wav,[?9], duhjelpeha
                 var keyPattern = /(\d+)/g;
 
                 for(i in raw){
-                    var entry = raw[i].toUpperCase();
+                    var entry = raw[i];
                     if(pattern.test(entry)){
                         var key = entry.match(keyPattern)[0];
                         var alt = entry.replace(pattern,"").trim().split("|");
                         var wordList = [];
                         for(var i in alt){
                             var item = alt[i].split(",")
-                            wordList.push({word:item[0].trim(), image:item[1].trim(), sounds:item.slice(2) });
+                            wordList.push({word:item[0].trim().toUpperCase(), image:item[1].trim(), sounds:item.slice(2) });
                         }
 
                         dictionary["key_"+key] = wordList;

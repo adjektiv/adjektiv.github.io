@@ -347,14 +347,14 @@ bakgrunn.jpg,den.wav,[?1],[?2+2],seilteborttil.wav,[?5],somvillesitte.wav,saasei
                 var keyPattern = /(\d+)/g;
 
                 for(i in raw){
-                    var entry = raw[i].toUpperCase();
+                    var entry = raw[i];
                     if(pattern.test(entry)){
                         var key = entry.match(keyPattern)[0];
                         var alt = entry.replace(pattern,"").trim().split("|");
                         var wordList = [];
                         for(var i in alt){
                             var item = alt[i].split(",")
-                            wordList.push({word:item[0].trim(), image:item[1].trim(), sounds:item.slice(2) });
+                            wordList.push({word:item[0].trim().toUpperCase(), image:item[1].trim(), sounds:item.slice(2) });
                         }
 
                         dictionary["key_"+key] = wordList;

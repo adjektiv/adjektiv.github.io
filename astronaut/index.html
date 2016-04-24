@@ -70,8 +70,8 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
         <script type="application/javascript">
 
             /*
-                Story telling script by Christian Simonsen
-                April 2016
+             Story telling script by Christian Simonsen
+             April 2016
              */
 
             var STORY = 0;
@@ -89,10 +89,10 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
 
             jQuery(document).ready(function(){
                 /*fetchStory(sourceFile).done(function(){
-                    rawData = rawData;
-                    parseRawStory(rawData);
-                    tellStory();
-                });*/
+                 rawData = rawData;
+                 parseRawStory(rawData);
+                 tellStory();
+                 });*/
                 rawData = $("#historieText").html();
                 parseRawStory(rawData);
                 tellStory();
@@ -131,7 +131,7 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
                 $("#options").html("");
 
                 var audio = $("#soundPlayer")[0];
-                audio.src = "audio/" + option.sounds[0].trim();
+                audio.src = "audio/" + option.sounds[0];
                 audio.onended = function(){
                     audioIndex++;
                     playAudio();
@@ -190,9 +190,9 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
                     if(sound != undefined){
                         var keyPattern = /(\d+)/g;
                         if(sound[0] == "["){
-                            var matches = sound.match(keyPattern)[0];
+                            var matches = sound.match(keyPattern);//sound.match(keyPattern)[0];
                             var key = matches[0];
-                            var offset = (matches[1] != undefined) ? matches[1]:0;
+                            var offset = (matches[1] != undefined) ? (matches[1]*1)-1:0;
                             var choice = storyStructure.choice["key_" + key];
 
                             if(choice != undefined){
@@ -245,16 +245,16 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
 
                 var renderButtons = (buttons != undefined) ? buttons:true;
 
-                if(pattern.test(rawPage)){
+                if(pattern.test(rawPage) || refPattern.test(rawPage)){
                     matches = rawPage.match(pattern);
-                    for(var i in matches){
+                    for(i in matches){
                         var match = matches[i];
                         var key = match.match(keyPattern)[0];
 
                         var disp = "...........";
 
                         if( storyStructure.choice["key_" + key]){
-                            disp = storyStructure.choice["key_" + key].word;  //.replace(/(\[\?\d\])/,"");
+                            disp = storyStructure.choice["key_" + key].word; //.replace(/(\[\?\d\])/,"");
                         }
 
                         var action = "<span class='btn btn-info' id='key_" + key + "' onclick='showOptions(" + key + ")'>" +disp + "</span>";
@@ -267,15 +267,10 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
 
                     if(refPattern.test(parsedPage)){
                         matches = rawPage.match(refPattern);
-                        for(var i in matches){
+                        for(i in matches){
                             match = matches[i];
                             key = match.match(keyPattern)[0];
-                            var word = storyStructure.choice["key_" + key];
-
-                            if(word != undefined){
-                                word = word.word;
-                            }
-
+                            var word = storyStructure.choice["key_" + key].word;
                             if(word != undefined){
                                 parsedPage = parsedPage.replace(match.trim(),word.trim());
                             } else{
@@ -352,14 +347,14 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
                 var keyPattern = /(\d+)/g;
 
                 for(i in raw){
-                    var entry = raw[i].toUpperCase();
+                    var entry = raw[i];
                     if(pattern.test(entry)){
                         var key = entry.match(keyPattern)[0];
                         var alt = entry.replace(pattern,"").trim().split("|");
                         var wordList = [];
                         for(var i in alt){
                             var item = alt[i].split(",")
-                            wordList.push({word:item[0].trim(), image:item[1].trim(), sounds:item.slice(2) });
+                            wordList.push({word:item[0].trim().toUpperCase(), image:item[1].trim(), sounds:item.slice(2) });
                         }
 
                         dictionary["key_"+key] = wordList;
@@ -374,7 +369,6 @@ ingen, astronautenogvennenkjortehjemogspistesegmettepa.wav, [?6]
             }
 
         </script>
-
 
     </body>
 </html>

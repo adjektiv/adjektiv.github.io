@@ -34,38 +34,39 @@
 
 
 <script type="text/html" id="historieText">
-    Fortelling om prinsessen
-    Bakgrunn.jpg
+Fortelling om prinsessen
+Bakgrunn.jpg
 
-    Det var en gang en [1] prinsesse
-    Bakgrunn.jpg,detvarengangen.wav,[?1],prinsesse.wav
+Det var en gang en [1] prinsesse
+Bakgrunn.jpg,detvarengangen.wav,[?1],prinsesse.wav
 
-    Den [?1]e prinsessen bodde i et [2]
-    Bakgrunn.jpg,den.wav,[?1],prinsessenboddeiet.wav,[?2]
+Den [?1]e prinsessen bodde i et [2]
+Bakgrunn.jpg,den.wav,[?1],prinsessenboddeiet.wav,[?2]
 
-    Inne i [?2]et hadde hun en veldig rar [3]
-    Bakgrunn.jpg,innei.wav,[?2],haddehunenveldigrar.wav,[?3]
+Inne i [?2]et hadde hun en veldig rar [3]
+Bakgrunn.jpg,innei.wav,[?2],haddehunenveldigrar.wav,[?3]
 
-    Den rare [?3]en var veldig [4]
-    Bakgrunn.jpg,denrare.wav,[?3],varveldig.wav,[?4]
+Den rare [?3]en var veldig [4]
+Bakgrunn.jpg,denrare.wav,[?3],varveldig.wav,[?4]
 
-    Hun likte å [5] den rare [?4]e [?3]en hver dag
-    Bakgrunn.jpg,hunlikteå.wav,[?5],denrare.wav,[?4],[?3],hverdag.wav
-
-
-    Derfor ble den [?1]e prinsessen veldig [6]
-    Bakgrunn.jpg,derforbleiden.wav,[?1],prinsessenveldig.wav,[?6]
+Hun likte å [5] den rare [?4]e [?3]en hver dag
+Bakgrunn.jpg,hunlikteå.wav,[?5],denrare.wav,[?4],[?3],hverdag.wav
 
 
-    ----------
-    [1] SØT,SOT.jpg,sot.wav | SUR, SUR.jpg, sur.wav | LANG, LANG.jpg, lang.wav
-    [2] HUS, HUS.jpg, hus.wav | SLOTT, SLOTT.jpg, slott.wav | TELT, TELT.jpg, telt.wav
-    [3] KANIN, KANIN.jpg, kanin.wav | MUFFINS, MUFFINS.jpg, muffins.wav | KJOLE, KJOLE.jpg, kjole.wav
-    [4] MYK, MYK.jpg, myk.wav | FLEKKET, FLEKKET.jpg, flekkete.wav | SEIG, SEIG.jpg, seig.wav
-    [5] KOSE(KOSE.jpg,kose.wav), SPISE(SPISE.jpg,spise.wav), LEKE MED(LEKE MED.jpg,lekemed.wav | KASTE, KASTE.jpg, kaste.wav
-    [6] EKKEL, EKKEL.jpg, ekkel.wav | PROMPETE, PROMPETE.jpg, prompete.wav | GRØNN, GRONN.jpg, gronn.wav | KVALM, KVALM.jpg, kvalm.wav
+Derfor ble den [?1]e prinsessen veldig [6]
+Bakgrunn.jpg,derforbleiden.wav,[?1],prinsessenveldig.wav,[?6]
+
+
+----------
+[1] SØT,SOT.jpg,sot.wav | SUR, SUR.jpg, sur.wav | LANG, LANG.jpg, lang.wav
+[2] HUS, HUS.jpg, hus.wav | SLOTT, SLOTT.jpg, slott.wav | TELT, TELT.jpg, telt.wav
+[3] KANIN, KANIN.jpg, kanin.wav | MUFFINS, MUFFINS.jpg, muffins.wav | KJOLE, KJOLE.jpg, kjole.wav
+[4] MYK, MYK.jpg, myk.wav | FLEKKET, FLEKKET.jpg, flekkete.wav | SEIG, SEIG.jpg, seig.wav
+[5] KOSE(KOSE.jpg,kose.wav), SPISE(SPISE.jpg,spise.wav), LEKE MED(LEKE MED.jpg,lekemed.wav | KASTE, KASTE.jpg, kaste.wav
+[6] EKKEL, EKKEL.jpg, ekkel.wav | PROMPETE, PROMPETE.jpg, prompete.wav | GRØNN, GRONN.jpg, gronn.wav | KVALM, KVALM.jpg, kvalm.wav
 
 </script>
+
 
 
 
@@ -134,7 +135,7 @@
         $("#options").html("");
 
         var audio = $("#soundPlayer")[0];
-        audio.src = "audio/" + option.sounds[0].trim();
+        audio.src = "audio/" + option.sounds[0];
         audio.onended = function(){
             audioIndex++;
             playAudio();
@@ -193,9 +194,9 @@
             if(sound != undefined){
                 var keyPattern = /(\d+)/g;
                 if(sound[0] == "["){
-                    var matches = sound.match(keyPattern)[0];
+                    var matches = sound.match(keyPattern);//sound.match(keyPattern)[0];
                     var key = matches[0];
-                    var offset = (matches[1] != undefined) ? matches[1]:0;
+                    var offset = (matches[1] != undefined) ? (matches[1]*1)-1:0;
                     var choice = storyStructure.choice["key_" + key];
 
                     if(choice != undefined){
@@ -248,16 +249,16 @@
 
         var renderButtons = (buttons != undefined) ? buttons:true;
 
-        if(pattern.test(rawPage)){
+        if(pattern.test(rawPage) || refPattern.test(rawPage)){
             matches = rawPage.match(pattern);
-            for(var i in matches){
+            for(i in matches){
                 var match = matches[i];
                 var key = match.match(keyPattern)[0];
 
                 var disp = "...........";
 
                 if( storyStructure.choice["key_" + key]){
-                    disp = storyStructure.choice["key_" + key].word;  //.replace(/(\[\?\d\])/,"");
+                    disp = storyStructure.choice["key_" + key].word; //.replace(/(\[\?\d\])/,"");
                 }
 
                 var action = "<span class='btn btn-info' id='key_" + key + "' onclick='showOptions(" + key + ")'>" +disp + "</span>";
@@ -270,15 +271,10 @@
 
             if(refPattern.test(parsedPage)){
                 matches = rawPage.match(refPattern);
-                for(var i in matches){
+                for(i in matches){
                     match = matches[i];
                     key = match.match(keyPattern)[0];
-                    var word = storyStructure.choice["key_" + key];
-
-                    if(word != undefined){
-                        word = word.word;
-                    }
-
+                    var word = storyStructure.choice["key_" + key].word;
                     if(word != undefined){
                         parsedPage = parsedPage.replace(match.trim(),word.trim());
                     } else{
@@ -355,14 +351,14 @@
         var keyPattern = /(\d+)/g;
 
         for(i in raw){
-            var entry = raw[i].toUpperCase();
+            var entry = raw[i];
             if(pattern.test(entry)){
                 var key = entry.match(keyPattern)[0];
                 var alt = entry.replace(pattern,"").trim().split("|");
                 var wordList = [];
                 for(var i in alt){
                     var item = alt[i].split(",")
-                    wordList.push({word:item[0].trim(), image:item[1].trim(), sounds:item.slice(2) });
+                    wordList.push({word:item[0].trim().toUpperCase(), image:item[1].trim(), sounds:item.slice(2) });
                 }
 
                 dictionary["key_"+key] = wordList;
