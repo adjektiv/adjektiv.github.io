@@ -1,0 +1,31 @@
+﻿Fortelling om prinsessen 
+
+Bakgrunn.jpg
+
+Det var en gang en [1] prinsesse
+Bakgrunn.jpg,detvarengangen.wav,prinsesse.wav
+
+Den [?1]e prinsessen bodde i et [2]
+Bakgrunn.jpg,den.wav,prinsessenboddeiet.wav
+
+Inne i [?2]et hadde hun en veldig rar [3] 
+Bakgrunn.jpg,innei.wav,haddehunenveldigrar.wav
+
+Den rare [?3]en var veldig [4] 
+Bakgrunn.jpg,denrare.wav,varveldig.wav
+
+Hun likte å [5] den rare [?4]e [?3]en hver dag
+Bakgrunn.jpg,hunlikteå.wav,denrare.wav,hverdag.wav
+
+
+Derfor ble den [?1]e prinsessen veldig [6]
+Bakgrunn.jpg,derforbleiden.wav,prinsessenveldig.wav
+
+
+----------
+[1] SØT, SOT.jpg, sot.wav | SUR, SUR.jpg, sur.wav | LANG, LANG.jpg, lang.wav
+[2] HUS, HUS.jpg, hus.wav | SLOTT, SLOTT.jpg, slott.wav | TELT, TELT.jpg, telt.wav
+[3] KANIN, KANIN.jpg, kanin.wav | MUFFINS, MUFFINS.jpg, muffins.wav | KJOLE, KJOLE.jpg, kjole.wav
+[4] MYK, MYK.jpg, myk.wav | FLEKKET, FLEKKET.jpg, flekkete.wav | SEIG, SEIG.jpg, seig.wav
+[5] KOSE(KOSE.jpg,kose.wav), SPISE(SPISE.jpg,spise.wav), LEKE MED(LEKE MED.jpg,lekemed.wav | KASTE, KASTE.jpg, kaste.wav
+[6] EKKEL, EKKEL.jpg, ekkel.wav | PROMPETE, PROMPETE.jpg, prompete.wav | GRØNN, GRØNN.jpg, grønn.wav | KVALM, KVALM.jpg, kvalm.wav 
