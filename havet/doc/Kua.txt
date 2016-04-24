@@ -1,0 +1,11 @@
+Kua som skulle ut å gå tur.
+
+Det var en [1] ku som hete Rune, som skulle ut å gå tur. Den kunne ikke den [2] veien.
+
+Den [?1]e kua spiste bare [3] kløver og [4] tistler.
+
+----------
+[1] blind(blind.png), rød(red.png), søt(sweet.png)
+[2] vansklige, lange, kronglete
+[3] rød, hvit
+[4] taggete, stikkende, kløende
