@@ -257,7 +257,7 @@ function extractAudio(raw){
         var next = (i*1) + 1;
         if(raw[i].trim() != "" && raw[next] != undefined && raw[next].trim() == ""){
             var parts = raw[i].split(",");
-            var fi = parts.slice(1);
+            var fi = parts.slice(1).trim();
             audio.push(fi);
         }
     }
