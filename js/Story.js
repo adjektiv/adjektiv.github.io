@@ -137,7 +137,7 @@ function playAudio(){
 
             if(sound != ""){
                 var audio = $("#soundPlayer")[0];
-                audio.src = "audio/" + sound;
+                audio.src = "audio/" + sound.trim();
                 audio.onended = function(){
                     audioIndex++;
                     playAudio();
