@@ -203,7 +203,12 @@ function renderTextPage(page,buttons){
             for(i in matches){
                 match = matches[i];
                 key = match.match(keyPattern)[0];
-                var word = storyStructure.choice["key_" + key].word;
+                var word = "...";
+                if(storyStructure.choice["key_" + key] != undefined){
+                    word = storyStructure.choice["key_" + key].word;
+                } else{
+                    console.log("Prøver å bruke valg for " + key + "uten at det valget er gjort");
+                }
                 if(word != undefined){
                     parsedPage = parsedPage.replace(match.trim(),word.trim());
                 } else{
