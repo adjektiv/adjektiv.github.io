@@ -63,8 +63,8 @@ function pickOption(index){
     storyStructure.choice["key_" + currentKey] = option;
     $("#options").html("");
 
-    var audio = $("#soundPlayer")[0].trim();
-    audio.src = "audio/" + option.sounds[0];
+    var audio = $("#soundPlayer")[0];
+    audio.src = "audio/" + option.sounds[0].trim();
     audio.onended = function(){
         audioIndex++;
         playAudio();
