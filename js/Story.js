@@ -41,7 +41,7 @@ function showOptions(key){
         var imagefile = dictionary[i].image;
         var audioFile = dictionary[i].sounds[0];
 
-        var action = "<div class='col-md-2 text-center col-centered' onclick='pickOption(\"" + i + "\")'>";
+        var action = "<div class='col-md-3 text-center col-centered' onclick='pickOption(\"" + i + "\")'>";
 
         if(imagefile != ""){
             action += "<img width='160px' class='img-rounded' src='img/"+ imagefile +"' alt='"+ word +"'>";
@@ -81,10 +81,13 @@ function tellStory(){
 function showFullStory(){
     var fullStory = "";
     audioQue = [];
-    for(i in storyStructure.story){
+    for(var i in storyStructure.story){
         fullStory += renderTextPage(i,false);
         audioQue = audioQue.concat(queAudio(i));
+        console.log(audioQue);
     }
+    console.log("-----");
+    console.log(audioQue);
     $("#story").html(fullStory);
     playAudio();
 }
@@ -150,16 +153,13 @@ function playAudio(){
 }
 
 function queAudio(page){
-    console.log("Que audio " + page);
     audioIndex = 0;
     return storyStructure.audio[page];
 }
 
 function renderImage(page){
-    console.log("Render image " + page);
     var image = storyStructure.images[page];
     var img = "";
-    console.log("img " + image);
     if(image != "" && image !== "ingen"){
         img = "<img src=\"img/"+ image +"\" class='backgroundImage' />";
     }
@@ -167,7 +167,6 @@ function renderImage(page){
 }
 
 function renderTextPage(page,buttons){
-    console.log("Render text" + page);
     var rawPage = storyStructure.story[page].toUpperCase();
 
     var parsedPage  = "<p>"+ rawPage +"</p>";
