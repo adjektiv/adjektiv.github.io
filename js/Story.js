@@ -48,7 +48,7 @@ function showOptions(key){
         }
 
         if(audioFile != ""){
-            action += "<audio id=\"audio_" + word + "\" src='audio/" + audioFile +"' />";
+            action += "<audio id=\"audio_" + word + "\" src='audio/" + audioFile.trim() +"' />";
         }
 
         action += "<p class='smaller'>"+word+"</p></div>";
